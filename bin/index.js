@@ -29,8 +29,16 @@ program
 
     co(function* () {
       const engine = yield prompt('Engine (google or yandex): ');
-      const key    = yield prompt('API Key: ');
-  
+
+      if (engine.toLowerCase() !== 'yandex' && engine.toLowerCase() !== 'google') {
+        process.stdin.pause();
+        throw new Error('Engine does not exist!');
+      }
+
+      const key = yield prompt('API Key: ');
+
+      process.stdin.pause();
+
       return ({
         engine,
         key
@@ -48,12 +56,7 @@ program
       log();
       log(chalk`{green Translation engine instantiated! }`);
       log();
-    })
-    .then(() => {
-      // process._getActiveHandles();
-      // process._getActiveRequests();
-      process.exit();
-    })
+    });
   });
 
 program
