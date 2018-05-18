@@ -68,23 +68,10 @@ program
   .option("-l, --language <ISO-639>", "ISO 639 (1 or 2)")
   .option("-i, --ignore <file-path>", "A JSON file containing words that should not be translated")
   .action(function({ input, directory, language, ignore }){
-    let engine, key = false;
 
-    const rs = fs.createReadStream('../config/translate.config.json');
+    const data = fs.readFileSync('../config/translate.config.json', 'utf8');
 
-    rs.on('readable', () => {
-      const data = rs.read();
-
-      if (data) {
-        const config = JSON.parse(data);
-        engine = config.engine;
-        key = config.key;
-      }
-    });
-
-    if (!engine || !key) {
-      throw new Error('Translation engine not properly instantiated! Did you run configure?');
-    }
+    const { engine, key } = JSON.parse(data);
 
     if (directory) {
       if (!fs.existsSync(directory)) {
