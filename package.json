@@ -1,0 +1,28 @@
+{
+  "name": "json-file-translator",
+  "version": "1.0.0",
+  "description": "Translate JSON files into language of your choice",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "translator": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Awpatterson217/json-file-translator.git"
+  },
+  "author": "Adam W Patterson",
+  "license": "(Apache-2.0)",
+  "bugs": {
+    "url": "https://github.com/Awpatterson217/json-file-translator/issues"
+  },
+  "dependencies": {
+    "chalk": "^2.4.1",
+    "co": "^4.6.0",
+    "co-prompt": "^1.0.0",
+    "commander": "^2.15.1",
+    "translate": "^1.0.2"
+  }
+}
